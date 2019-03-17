@@ -55,6 +55,22 @@ function updateData() {
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="../../canvasjs.min.js"></script>
 	<h1>Welcome to Binary-Dream Website</h1>
-	<p>This Website is Under Construction</p>
+	<p>This Website is Under Construction</p><br>
+	<p>Last Tick is</p>
+	<p id="demo">
+	  <script>
+		var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
+
+		ws.onopen = function(evt) {
+    		ws.send(JSON.stringify({ticks:'R_100'}));
+		};
+		ws.onmessage = function(msg) {
+  		 var data = JSON.parse(msg.data);
+   		console.log( data.tick);
+  		document.getElementById("demo").innerHTML = data.tick.quote;
+		};		
+	  </script>
+	</p> 
+
 </body>
 </html>
