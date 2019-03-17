@@ -21,7 +21,7 @@ var dataPoints = [];
 var options = {
 	theme: "light2",
 	title: {
-		text: "Live Chart from JSON Data"
+		text: "Binary Dream Chart"
 	},
 	data: [{
 		type: "spline",
@@ -52,7 +52,7 @@ function addData(data) {
 		yValue = parseInt(data[0][1]);
 	}
 	$("#chartContainer").CanvasJSChart().render();
-	setTimeout(updateData, 1000);
+	setTimeout(updateData, 1500);
 }
 
 function updateData() {
