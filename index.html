@@ -3,6 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <script>
+		var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
+
+		ws.onopen = function(evt) {
+    		ws.send(JSON.stringify({ticks:'R_100'}));
+		};
+		ws.onmessage = function(msg) {
+  		 var data = JSON.parse(msg.data);
+   		console.log( data.tick);
+  		document.getElementById("demo").innerHTML = data.tick.quote;
+		};		
+	  </script>
+<script>
 window.onload = function() {
 
 var dataPoints = [];
@@ -21,7 +33,7 @@ updateData();
 
 // Initial Values
 var xValue = 0;
-var yValue = 10;
+var yValue = 2000;
 var newDataCount = 6;
 
 function addData(data) {
@@ -58,18 +70,7 @@ function updateData() {
 	<p>This Website is Under Construction</p><br>
 	<p>Last Tick is</p>
 	<p id="demo">
-	  <script>
-		var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
-
-		ws.onopen = function(evt) {
-    		ws.send(JSON.stringify({ticks:'R_100'}));
-		};
-		ws.onmessage = function(msg) {
-  		 var data = JSON.parse(msg.data);
-   		console.log( data.tick);
-  		document.getElementById("demo").innerHTML = data.tick.quote;
-		};		
-	  </script>
+	  
 	</p> 
 
 </body>
