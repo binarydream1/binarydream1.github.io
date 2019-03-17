@@ -1,35 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<title> Binary Dream </title>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>	
-</head>
-	
-<body>
-<h1> <link rel="stylesheet" type="text/css" href="css/app.css"> Binary Dream Home</h1>
-<p>Welcome to Binary Dream website. It is where your Financial Dream Come True!! hahaha...
-   SITE UNDER CONSTRUCTION
-</p><br>
-
-<div id="chartContainer" style="height: 300px; width: 100%;">
+<meta charset="UTF-8">
 <script>
-window.onload = function () {
+window.onload = function() {
 
 var dataPoints = [];
 
-var options = {
+var chart = new CanvasJS.Chart("chartContainer", {
 	theme: "light2",
 	title: {
-		text: "Binary Dream Chart"
+		text: "Live Data"
 	},
 	data: [{
-		type: "spline",
+		type: "line",
 		dataPoints: dataPoints
 	}]
-};
-
-$("#chartContainer").CanvasJSChart(options);
+});
 updateData();
 
 // Initial Values
@@ -38,30 +25,34 @@ var yValue = 10;
 var newDataCount = 6;
 
 function addData(data) {
-	if (newDataCount != 1) {
-		$.each(data, function (key, value) {
-			dataPoints.push({ x: value[0], y: parseInt(value[1]) });
+	if(newDataCount != 1) {
+		$.each(data, function(key, value) {
+			dataPoints.push({x: value[0], y: parseInt(value[1])});
 			xValue++;
 			yValue = parseInt(value[1]);
 		});
-		newDataCount = 1;
 	} else {
 		//dataPoints.shift();
-		dataPoints.push({ x: data[0][0], y: parseInt(data[0][1]) });
+		dataPoints.push({x: data[0][0], y: parseInt(data[0][1])});
 		xValue++;
 		yValue = parseInt(data[0][1]);
 	}
-	$("#chartContainer").CanvasJSChart().render();
-	setTimeout(updateData, 1500);
+	
+	newDataCount = 1;
+	chart.render();
+	setTimeout(updateData, 500);
 }
 
 function updateData() {
-	$.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart=" + xValue + "&ystart=" + yValue + "&length=" + newDataCount + "type=json", addData);
+	$.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart="+xValue+"&ystart="+yValue+"&length="+newDataCount+"type=json&callback=?", addData);
 }
 
 }
-</script>	
-</div>
-
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="../../canvasjs.min.js"></script>
 </body>
 </html>
