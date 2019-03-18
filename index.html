@@ -2,18 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script>
-		var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
-
-		ws.onopen = function(evt) {
-    		ws.send(JSON.stringify({ticks:'R_100'}));
-		};
-		ws.onmessage = function(msg) {
-  		 var data = JSON.parse(msg.data);
-   		console.log( data.tick);
-  		document.getElementById("demo").innerHTML = data.tick.quote;
-		};		
-	  </script>
+<script src="/javascript/app.js"></script>
 <script>
 window.onload = function() {
 
@@ -72,6 +61,24 @@ function updateData() {
 	<p id="demo">
 	  
 	</p> 
+	
+	<div id="contract proposal" >
+		
+		<p id="waktu"></p><br>
+		<p>-------------------------------------</p><br>
+		<form>
+  			API Token<br>
+  			<input id=myToken type="text" name="API token"></input>
+		</form>
+
+		<ul>
+  		<li id="aset r10"></li>
+  		<li >Last Tick: <b><text id="spot" style= "color:blue;"></text></b></li>
+   		<li id="aset r25"></li>
+  		<li >Last Tick: <b><text id="spot2" style= "color:blue;"></text></b></li>
+		</ul>
+	
+	</div>
 
 </body>
 </html>
