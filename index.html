@@ -1,81 +1,37 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-
-<script>
-window.onload = function() {
-
-var dataPoints = [];
-
-var chart = new CanvasJS.Chart("chartContainer", {
-	theme: "light2",
-	title: {
-		text: "Binary Dream Website"
-	},
-	data: [{
-		type: "line",
-		dataPoints: dataPoints
-	}]
-});
-updateData();
-
-// Initial Values
-var xValue = 0;
-var yValue = 2000;
-var newDataCount = 6;
-
-function addData(data) {
-	if(newDataCount != 1) {
-		$.each(data, function(key, value) {
-			dataPoints.push({x: value[0], y: parseInt(value[1])});
-			xValue++;
-			yValue = parseInt(value[1]);
-		});
-	} else {
-		//dataPoints.shift();
-		dataPoints.push({x: data[0][0], y: parseInt(data[0][1])});
-		xValue++;
-		yValue = parseInt(data[0][1]);
-	}
-	
-	newDataCount = 1;
-	chart.render();
-	setTimeout(updateData, 500);
-}
-
-function updateData() {
-	$.getJSON("https://canvasjs.com/services/data/datapoints.php?xstart="+xValue+"&ystart="+yValue+"&length="+newDataCount+"type=json&callback=?", addData);
-}
-
-}
-</script>
+<head>    
+    <style>    
+      </style>
+  
 </head>
+
 <body>
-<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="../../canvasjs.min.js"></script>
-	<h1>Welcome to Binary-Dream Website</h1>
-	<p>This Website is Under Construction</p><br>
-	
-	
-	<div id="contract proposal" >
-		<script src=".../javascript/app.js"></script>
-		<p id="waktu"></p><br>
-		<p>-------------------------------------</p><br>
-		<form>
-  			API Token<br>
-  			<input id=myToken type="text" name="API token"></input>
-		</form>
+  
+ <button class="tablink" onclick="openPage('Analyzer', this, 'DarkSlateGrey')">Analyzer</button>
+<button class="tablink" onclick="openPage('Trades', this, 'DarkSeaGreen')" id="defaultOpen">Trades</button>
+<button class="tablink" onclick="openPage('Logs', this, 'LightSeaGreen')">Logs</button>
+<button class="tablink" onclick="openPage('Statistic', this, 'SteelBlue ')">Statistic</button>
 
-		<ul>
-  		<li id="aset r10"></li>
-  		<li >Last Tick: <b><text id="spot" style= "color:blue;"></text></b></li>
-   		<li id="aset r25"></li>
-  		<li >Last Tick: <b><text id="spot2" style= "color:blue;"></text></b></li>
-		</ul>
-	
-	</div>
+<div id="Analyzer" class="tabcontent">
+  <h3>Analyzer</h3>
+  <p>Analyzing Market..</p>
+</div>
 
+<div id="Trades" class="tabcontent">
+  <h3>Trades</h3>
+  <p>Some open trades!</p> 
+</div>
+
+<div id="Logs" class="tabcontent">
+  <h3>Logs</h3>
+  <p>Closed Transactions.</p>
+</div>
+
+<div id="Statistic" class="tabcontent">
+  <h3>Statistic</h3>
+  <p>Win Loss Ratio</p>
+</div>
+  
 </body>
 </html>
