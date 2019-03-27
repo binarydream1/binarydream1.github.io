@@ -1,14 +1,35 @@
-body {
-  background-color: skyblue;
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
 }
 
-h1 {
+/* Style tab links */
+.tablink {
+  background-color: #555;
   color: white;
-  text-align: center;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
 }
 
-p {
-  font-family: verdana;
-  font-size: 20px;
-  text-align: center;
+.tablink:hover {
+  background-color: #777;
 }
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Analyzer {background-color: DarkSlateGrey ;}
+#Trades {background-color: DarkSeaGreen ;}
+#Logs {background-color: LightSeaGreen ;}
+#Statistic {background-color: SteelBlue ;}
