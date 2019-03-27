@@ -50,7 +50,7 @@ body, html {
 }
 .tabcontent1 {
   color: white;
-  display: none;
+  display: block;
   padding: 100px 20px;
   height: 100%;
 }
