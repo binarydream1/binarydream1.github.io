@@ -1,8 +1,28 @@
+/* Set height of body and the document to 100% to enable "full page tabs" */
 body, html {
   height: 100%;
   margin: 0;
   font-family: Arial;
 }
+
+ .box {
+    border-style: solid;
+    border-color: white ;
+    border-width: 1px;
+    text-align: left;
+    margin-top:2px;
+    padding-left:2px;
+    padding-top:5px;
+    padding-bottom:35px;
+  }
+
+.textFormat{
+   margin-top: 1px;
+   color: orange;
+   font-family:  Helvetica;
+   
+}
+
 
 /* Style tab links */
 .tablink {
