@@ -13,7 +13,7 @@ function openPage(pageName, elmnt, color) {
   }
 
   // Show the specific tab content
-  document.getElementById("Analyzer").style.display = "block";
+  document.getElementById("Analyzer").style.display = "none";
   document.getElementById(pageName).style.display = "block";
 
   // Add the specific color to the button used to open the tab content
